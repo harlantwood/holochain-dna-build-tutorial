@@ -23,11 +23,11 @@ jobs:
             substituters = https://cache.nixos.org/ https://cache.holo.host/
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.holo.host-1:lNXIXtJgS9Iuw4Cu6X0HINLu9sTfcjEntnrgwMQIMcE= cache.holo.host-2:ZJCkX3AUYZ8soxTLfTb60g+F3MkWD7hkH9y8CgqwhDQ=
 
-      # - name: Cache nix with Cachix
-      #   uses: cachix/cachix-action@v10
-      #   with:
-      #     name: holochain
-      #     authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Cache nix with Cachix
+        uses: cachix/cachix-action@v10
+        with:
+          name: holochain
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Install recent bash on macOS, and set as NIX_BUILD_SHELL # needed by macos, which has an older bash incompatible with nix
         if: ${{ runner.os == 'macOS' }}
